@@ -1,0 +1,34 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.12.35521.163
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TikTok-Race", "TikTok-Race\TikTok-Race.csproj", "{926A7F20-B362-461F-9181-A7131229DE94}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TikFinity.Models", "TikFinity.Models\TikFinity.Models.csproj", "{20DD5DCB-88AF-4E46-BEFD-7C55BEDE0BFE}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BlazorApp1", "BlazorApp1\BlazorApp1.csproj", "{24B01D0F-0FAD-455E-95DB-CF58B6D5895E}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{926A7F20-B362-461F-9181-A7131229DE94}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{926A7F20-B362-461F-9181-A7131229DE94}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{926A7F20-B362-461F-9181-A7131229DE94}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{926A7F20-B362-461F-9181-A7131229DE94}.Release|Any CPU.Build.0 = Release|Any CPU
+		{20DD5DCB-88AF-4E46-BEFD-7C55BEDE0BFE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{20DD5DCB-88AF-4E46-BEFD-7C55BEDE0BFE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{20DD5DCB-88AF-4E46-BEFD-7C55BEDE0BFE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{20DD5DCB-88AF-4E46-BEFD-7C55BEDE0BFE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{24B01D0F-0FAD-455E-95DB-CF58B6D5895E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{24B01D0F-0FAD-455E-95DB-CF58B6D5895E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{24B01D0F-0FAD-455E-95DB-CF58B6D5895E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{24B01D0F-0FAD-455E-95DB-CF58B6D5895E}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

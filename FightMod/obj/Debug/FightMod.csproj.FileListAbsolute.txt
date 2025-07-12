@@ -1,0 +1,11 @@
+C:\Users\Admin\source\repos\TikTok-Race\FightMod\obj\Debug\FightMod.csproj.AssemblyReference.cache
+C:\Users\Admin\source\repos\TikTok-Race\FightMod\obj\Debug\FightMod.csproj.CoreCompileInputs.cache
+C:\Users\Admin\source\repos\TikTok-Race\FightMod\bin\Debug\FightMod.dll
+C:\Users\Admin\source\repos\TikTok-Race\FightMod\bin\Debug\FightMod.pdb
+C:\Users\Admin\source\repos\TikTok-Race\FightMod\bin\Debug\NativeUI.dll
+C:\Users\Admin\source\repos\TikTok-Race\FightMod\bin\Debug\ScriptHookVDotNet3.dll
+C:\Users\Admin\source\repos\TikTok-Race\FightMod\bin\Debug\NativeUI.xml
+C:\Users\Admin\source\repos\TikTok-Race\FightMod\bin\Debug\ScriptHookVDotNet3.pdb
+C:\Users\Admin\source\repos\TikTok-Race\FightMod\obj\Debug\FightMod.csproj.Up2Date
+C:\Users\Admin\source\repos\TikTok-Race\FightMod\obj\Debug\FightMod.dll
+C:\Users\Admin\source\repos\TikTok-Race\FightMod\obj\Debug\FightMod.pdb

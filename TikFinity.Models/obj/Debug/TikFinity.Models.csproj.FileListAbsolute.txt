@@ -1,0 +1,9 @@
+C:\Users\Admin\Source\Repos\TikTok-Race\TikFinity.Models\obj\Debug\TikFinity.Models.csproj.AssemblyReference.cache
+C:\Users\Admin\Source\Repos\TikTok-Race\TikFinity.Models\obj\Debug\TikFinity.Models.csproj.CoreCompileInputs.cache
+C:\Users\Admin\Source\Repos\TikTok-Race\TikFinity.Models\bin\Debug\TikFinity.Models.dll
+C:\Users\Admin\Source\Repos\TikTok-Race\TikFinity.Models\bin\Debug\TikFinity.Models.pdb
+C:\Users\Admin\Source\Repos\TikTok-Race\TikFinity.Models\bin\Debug\Newtonsoft.Json.dll
+C:\Users\Admin\Source\Repos\TikTok-Race\TikFinity.Models\bin\Debug\Newtonsoft.Json.xml
+C:\Users\Admin\Source\Repos\TikTok-Race\TikFinity.Models\obj\Debug\TikFinit.584D2FAC.Up2Date
+C:\Users\Admin\Source\Repos\TikTok-Race\TikFinity.Models\obj\Debug\TikFinity.Models.dll
+C:\Users\Admin\Source\Repos\TikTok-Race\TikFinity.Models\obj\Debug\TikFinity.Models.pdb

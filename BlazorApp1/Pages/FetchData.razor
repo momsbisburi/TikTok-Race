@@ -1,0 +1,73 @@
+﻿@page "/fetchdata"
+@using BlazorApp1.Data
+@using HtmlAgilityPack
+
+
+
+
+@if (!string.IsNullOrEmpty(ProfilePictureUrl))
+{
+    <img src="@ProfilePictureUrl" alt="TikTok Profile Picture" width="150" />
+}
+
+@code {
+    private string ProfilePictureUrl = string.Empty;
+
+    protected override async Task OnInitializedAsync()
+    {
+        string username = "momsbisburi"; // Replace with the username you want to scrape
+        string url = $"https://www.tiktok.com/@{username}";
+
+        try
+        {
+            using HttpClient client = new HttpClient();
+            client.DefaultRequestHeaders.Add("User-Agent", "Mozilla/5.0 (Windows NT 10.0; Win64; x64)");
+
+            HttpResponseMessage response = await client.GetAsync(url);
+            response.EnsureSuccessStatusCode();
+
+            string htmlContent = await response.Content.ReadAsStringAsync();
+
+            HtmlDocument doc = new HtmlDocument();
+            doc.LoadHtml(htmlContent);
+
+            // Extract Profile Picture URL
+            var profileImageNode = doc.DocumentNode.SelectSingleNode("//img[contains(@class, 'DivAvatarWrapper')]");
+            string profileImageUrl = profileImageNode?.GetAttributeValue("src", "Not Found");
+
+            // Extract Display Name
+            var displayNameNode = doc.DocumentNode.SelectSingleNode("//h1[@data-e2e='user-title']");
+            string displayName = displayNameNode?.InnerText.Trim() ?? "Not Found";
+
+            // Extract Username
+            var usernameNode = doc.DocumentNode.SelectSingleNode("//h2[@data-e2e='user-subtitle']");
+            string userHandle = usernameNode?.InnerText.Trim() ?? "Not Found";
+
+            // Extract Followers
+            var followersNode = doc.DocumentNode.SelectSingleNode("//strong[@data-e2e='followers-count']");
+            string followers = followersNode?.InnerText.Trim() ?? "Not Found";
+
+            // Extract Likes
+            var likesNode = doc.DocumentNode.SelectSingleNode("//strong[@data-e2e='likes-count']");
+            string likes = likesNode?.InnerText.Trim() ?? "Not Found";
+
+            // Extract Bio
+            var bioNode = doc.DocumentNode.SelectSingleNode("//h2[@data-e2e='user-bio']");
+            string bio = bioNode?.InnerText.Trim() ?? "Not Found";
+
+            // Print Extracted Data
+            Console.WriteLine($"👤 Username: {userHandle}");
+            Console.WriteLine($"📛 Display Name: {displayName}");
+            Console.WriteLine($"👥 Followers: {followers}");
+            Console.WriteLine($"❤️ Likes: {likes}");
+            Console.WriteLine($"📸 Profile Picture: {profileImageUrl}");
+            Console.WriteLine($"📝 Bio: {bio}");
+            ProfilePictureUrl = profileImageUrl;
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine($"❌ Error: {ex.Message}");
+        }
+    }
+}
+

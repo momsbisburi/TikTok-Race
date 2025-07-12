@@ -1,0 +1,107 @@
+﻿@page "/"
+@using BlazorApp1.Data
+@inject RaceService RaceService
+
+<div class="max-w-screen-md h-screen mx-auto bg-black"> 
+    <h3 class="text-3xl font-bold text-white text-center">🏆 Race Leaderboard</h3>
+
+    @if (PlayerScores == null)
+    {
+        <p class="text-gray-600 text-lg animate-pulse text-center">Loading...</p>
+    }
+    else
+    {
+        <div class="space-y-2">
+            <div class="grid grid-cols-3 gap-1 justify-end items-end">
+                @foreach (var (player, index) in PlayerScores.Take(3).Select((item, i) => (item, i + 1)))
+                {
+                    <div class="flex flex-col items-center">
+                        <div>
+                            @if(player!=null){
+                                <div class="bg-cover bg-center  cursor-pointer rounded-full">
+                                    <img class="w-[60px] h-[60px] rounded-full" src="@PlayerProfilePictures.GetValueOrDefault(player.PlayerName)" />
+                                </div>
+                            }
+                        </div>
+                        <div class="flex items-center flex-col gap-3 font-semibold text-lg">
+                            <span class="text-[14px] text-white">@player.PlayerName</span>
+                        </div>
+                        <div class="flex text-white flex-col py-2 mb-1 items-center text-sm">
+                            <div>@player.TotalPoints points</div>
+                            <div></div>
+                        </div>
+                        <div class="w-full text-white h-@(index == 1 ? 28 : (index == 2 ? 20 : 8)) bg-gradient-to-b @(index == 1 ? "from-yellow-500/60" : (index == 2 ? "from-gray-400" : "from-orange-400/40")) rounded-t-xl border-slate-700 flex items-center justify-center text-3xl">#@index</div>
+                    </div>
+                }
+            </div>
+
+            @foreach (var (player, index) in PlayerScores.Skip(3).Select((item, i) => (item, i + 4)))
+            {
+                <div class="flex flex-row gap-x-4 gap-y-2 items-center border p-[5px] text-lg duration-300 bg-gradient-to-br rounded from-red-800 to-red-900 border-red-700">
+                    <div class="flex gap-4 flex-grow items-center">
+                        <div class="text-[14px] w-10 text-white">#@index</div>
+                        <div class="flex items-center gap-3 font-semibold text-lg">
+
+                            <span class="text-white text-[14px]" href="">@player.PlayerName</span>
+
+                        </div>
+
+                    </div>
+                    <div class="text-white">@player.TotalPoints points</div>
+                </div>
+            }
+        </div>
+    }
+</div>
+
+@code {
+    private List<PlayerLeaderboard> PlayerScores;
+    private Dictionary<string, string> PlayerProfilePictures = new();
+    private System.Timers.Timer _timer;
+
+    protected override async Task OnInitializedAsync()
+    {
+        await LoadLeaderboard();
+        await LoadPlayerProfiles(); // Fetch profile pictures separately
+        StartAutoRefresh();
+    }
+
+    private async Task LoadLeaderboard()
+    {
+        PlayerScores = await RaceService.GetLeaderboardAsync();
+        await LoadPlayerProfiles(); // Ensure profile pictures are loaded after leaderboard
+        await InvokeAsync(StateHasChanged);
+    }
+
+    private async Task LoadPlayerProfiles()
+    {
+        if (PlayerScores == null) return;
+
+        foreach (var player in PlayerScores)
+        {
+            if (!PlayerProfilePictures.ContainsKey(player.PlayerName))
+            {
+                var profilePicture = await RaceService.GetPlayerProfileAsync(player.PlayerName);
+                if (profilePicture!=null)
+                {
+                     PlayerProfilePictures[player.PlayerName] = profilePicture.ProfilePicture; // Use default if null
+
+                }
+            }
+        }
+        await InvokeAsync(StateHasChanged);
+    }
+
+    private void StartAutoRefresh()
+    {
+        _timer = new System.Timers.Timer(10000);
+        _timer.Elapsed += async (sender, e) => await LoadLeaderboard();
+        _timer.AutoReset = true;
+        _timer.Enabled = true;
+    }
+
+    public void Dispose()
+    {
+        _timer?.Dispose();
+    }
+}
